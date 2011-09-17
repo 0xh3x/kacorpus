@@ -19,6 +19,6 @@ class MySpider(CrawlSpider):
     )
 
     def save_file(self, response):
-        filename = response.url.split("/")[-1]
+        filename = '-'.join(response.url.split("/")[-3:])
         self.log('Saving %s' % filename)
         open(filename, 'wb').write(response.body)
