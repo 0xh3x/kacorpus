@@ -15,11 +15,17 @@ scrapy crawl buki.ge
 antiword *.doc>../bukigetext.txt
 rm *.doc
 
-cd ../libge
-scrapy crawl lib.ge
-
 
 cd ../nplggovge
 scrapy crawl nplg.gov.ge
 find . -name '*.pdf' -exec pdftotext {} \;
+cat *.txt>../nplggovgetext.txt
+rm *.doc *.txt
+
+
+cd ../libge
+scrapy crawl lib.ge
+mv libgetext.txt ..
+
+
 

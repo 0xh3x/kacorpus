@@ -7,10 +7,11 @@ from forumge.items import ForumgeItem
 class MySpider(CrawlSpider):
     name = 'forum.ge'
     allowed_domains = ['forum.ge']
-    start_urls = ['http://forum.ge/']
+    start_urls = ['http://forum.ge/?showforum=87']
+    #start_urls = ['http://forum.ge/']
 
     rules = (
-        Rule(SgmlLinkExtractor(allow=('\?showforum=\d+.+', ))),
+        Rule(SgmlLinkExtractor(allow=('.+showforum=\d+.+', ))),
         Rule(SgmlLinkExtractor(allow=('.+showtopic=\d+.+', ), restrict_xpaths="//td[@class='row4' and not(@align)]"), callback='parse_topic'),
     )
 
